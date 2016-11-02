@@ -1,0 +1,23 @@
+  LOCAL_PATH := $(call my-dir)
+  include $(CLEAR_VARS)
+   
+  # Module name should match apk name to be installed.
+  LOCAL_MODULE := alphavnc
+  LOCAL_SRC_FILES := alphavnc_0.4.8-BETA.apk
+  LOCAL_REQUIRED_MODULES := libvnc.so
+  LOCAL_MODULE_CLASS := APPS
+  LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+
+  LOCAL_CERTIFICATE := PRESIGNED
+   
+  include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE := libvnc.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH  := $(TARGET_OUT_SHARED_LIBRARIES)
+LOCAL_SRC_FILES := lib/armeabi-v7a/$(LOCAL_MODULE)
+
+include $(BUILD_PREBUILT)
+
